@@ -4,39 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STATE OF PROTOCOL // FOUNDATION</title>
-    <!-- Zero External Requests - Integrity maintained via style.css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navigation Bar: Institutional Architecture -->
     <nav class="navbar">
         <div class="nav-brand">
             <div class="dot"></div>
             <span>STATE OF PROTOCOL <span class="dim">/ FOUNDATION</span></span>
         </div>
-        <!-- Real-time Status Indicator -->
         <div class="status-up" style="font-size: 10px; letter-spacing: 1px;">SYSTEM: OPTIMAL</div>
     </nav>
 
-    <!-- Main Container -->
     <main class="container">
-        <!-- Hero Section: Clear & Authoritative -->
         <header class="hero">
             <h1>THE BRAND <br> <span class="white">TRIGGER.</span></h1>
             <p class="subtitle">Standardizing neural assets and high-velocity digital identity through sovereign protocols.</p>
         </header>
 
-        <!-- Search / Input Engine -->
         <div class="search-box">
             <input type="text" id="brandInput" placeholder="Initialize branding concept analysis..." onkeypress="handleKey(event)" autocomplete="off">
             <button onclick="runAnalysis()" id="btn">Run Analysis</button>
         </div>
 
-        <!-- Results Display Grid (Populated via script.js) -->
         <div id="results" class="results-grid" style="display: none;">
             
-            <!-- Card 1: Trend Velocity -->
             <div class="card wide">
                 <span class="label">Social Trend Velocity / Real-time</span>
                 <div class="stats">
@@ -47,31 +39,26 @@
                 </div>
             </div>
 
-            <!-- Card 2: Asset Liquidity -->
             <div class="card">
                 <span class="label">Liquidity Index</span>
                 <div class="val" id="volVal">0M</div>
                 <span class="status-up">▲ STABLE MOMENTUM</span>
             </div>
 
-            <!-- Card 3: Identity & Security Audit -->
             <div class="card">
                 <span class="label">Identity Audit (SSL/Sovereign)</span>
                 <div id="domStatus" class="val-sm">Awaiting instruction...</div>
             </div>
 
-            <!-- Card 4: Regional Heatmap -->
             <div class="card wide overflow-hidden">
                 <span class="label">Global Adoption Heatmap</span>
                 <div class="heatmap" id="heatmap">
-                    <!-- Dynamic Regions injected by script.js -->
-                </div>
+                    </div>
             </div>
 
-            <!-- Card 5: Protocol Documentation (High-Value API Specs) -->
-            <section class="card wide docs-section" style="margin-top: 20px; border-style: dashed; border-color: rgba(255,255,255,0.1);">
-                <span class="label">Protocol Documentation / v1.0.4-alpha</span>
-                <div class="docs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 15px;">
+            <section class="card wide docs-section" style="margin-top: 20px;">
+                <span class="label">Protocol Documentation / v1.0.5-alpha</span>
+                <div class="docs-grid" style="margin-top: 15px;">
                     <div class="doc-item">
                         <h4 style="font-size: 11px; color: var(--accent); letter-spacing: 1px; margin-bottom: 8px;">[ GET ] /api/v1/velocity</h4>
                         <p style="font-size: 10px; color: var(--dim); line-height: 1.4;">Retrieve real-time social momentum data for neural branding architectures.</p>
@@ -85,18 +72,40 @@
         </div>
     </main>
 
-    <!-- Institutional Footer: Dynamic Sync Tracking -->
-    <footer style="margin-top: 100px; padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+    <section class="container" style="padding-top: 0;">
+        <span class="label">Strategic Governance / Core Team</span>
+        <div class="docs-grid" style="margin-top: 20px;">
+            <div class="card" style="text-align: center; border-style: solid;">
+                <div style="width: 60px; height: 60px; background: #222; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
+                <div style="font-weight: bold; font-size: 14px;">SHIFT_DEV</div>
+                <div style="font-size: 10px; color: var(--dim);">Lead Protocol Architect</div>
+            </div>
+            <div class="card" style="text-align: center; border-style: solid;">
+                <div style="width: 60px; height: 60px; background: #222; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
+                <div style="font-weight: bold; font-size: 14px;">WSE_NODE_01</div>
+                <div style="font-size: 10px; color: var(--dim);">Strategic Advisor</div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="margin-top: 100px; padding: 60px 40px; border-top: 1px solid var(--border); text-align: center;">
+        
+        <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 35px; flex-wrap: wrap;">
+            <a href="#" style="color: var(--dim); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold;">TWITTER / X</a>
+            <a href="#" style="color: var(--dim); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold;">DISCORD</a>
+            <a href="#" style="color: var(--accent); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold; border-bottom: 1px solid var(--accent);">WHITEPAPER (PDF)</a>
+        </div>
+
         <div style="font-size: 10px; color: var(--dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">
             Last Global Sync: <span id="sync-time" style="color: var(--accent); font-weight: bold;">---</span>
         </div>
+
         <div style="font-size: 9px; color: #444; line-height: 1.6;">
-            &copy; 2026 STATE OF PROTOCOL FOUNDATION.<br>
+            &copy; 2026 STATE OF PROTOCOL FOUNDATION. ALL RIGHTS RESERVED.<br>
             STRICT ADHERENCE TO ISO/IEC 27001 SIMULATED PROTOCOLS. ALL NODES OPERATIONAL.
         </div>
     </footer>
 
-    <!-- CORE SCRIPTS -->
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
