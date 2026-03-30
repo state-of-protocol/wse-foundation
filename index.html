@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-brand">
             <div class="dot"></div>
@@ -17,16 +18,22 @@
     </nav>
 
     <main class="container">
+        <!-- Hero Section -->
         <header class="hero">
             <h1>THE BRAND <br> <span class="white">TRIGGER.</span></h1>
             <p class="subtitle">Standardizing neural assets and high-velocity digital identity through sovereign protocols.</p>
         </header>
 
+        <!-- Optimized Search Engine UI -->
         <div class="search-box">
-            <input type="text" id="brandInput" placeholder="Initialize branding concept analysis..." onkeypress="handleKey(event)" autocomplete="off">
-            <button onclick="runAnalysis()" id="btn">Run Analysis</button>
+            <div style="position: relative; flex: 2;">
+                <span style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--dim); font-family: monospace;">/</span>
+                <input type="text" id="brandInput" placeholder="Search protocol documentation or analyze brand..." onkeypress="handleKey(event)" style="padding-left: 45px;" autocomplete="off">
+            </div>
+            <button onclick="runAnalysis()" id="btn">Analyze</button>
         </div>
 
+        <!-- Results Display Grid -->
         <div id="results" class="results-grid" style="display: none;">
             
             <div class="card wide">
@@ -53,11 +60,12 @@
             <div class="card wide overflow-hidden">
                 <span class="label">Global Adoption Heatmap</span>
                 <div class="heatmap" id="heatmap">
-                    </div>
+                    <!-- Dynamic Regions injected by script.js -->
+                </div>
             </div>
 
             <section class="card wide docs-section" style="margin-top: 20px;">
-                <span class="label">Protocol Documentation / v1.0.5-alpha</span>
+                <span class="label">Protocol Documentation / v1.0.6-alpha</span>
                 <div class="docs-grid" style="margin-top: 15px;">
                     <div class="doc-item">
                         <h4 style="font-size: 11px; color: var(--accent); letter-spacing: 1px; margin-bottom: 8px;">[ GET ] /api/v1/velocity</h4>
@@ -72,6 +80,7 @@
         </div>
     </main>
 
+    <!-- Strategic Governance Section -->
     <section class="container" style="padding-top: 0;">
         <span class="label">Strategic Governance / Core Team</span>
         <div class="docs-grid" style="margin-top: 20px;">
@@ -88,8 +97,19 @@
         </div>
     </section>
 
+    <!-- Partners & Ecosystem (Silicon Valley Style) -->
+    <section class="container" style="padding-top: 0; border-top: 1px solid var(--border); margin-top: 50px;">
+        <span class="label" style="text-align: center; margin-bottom: 40px; display: block;">Trusted Node Operators & Ecosystem Partners</span>
+        <div style="display: flex; justify-content: space-around; align-items: center; opacity: 0.4; filter: grayscale(1); gap: 40px; flex-wrap: wrap;">
+            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">NEURAL_LABS</div>
+            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">SOVEREIGN_DAO</div>
+            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">QUANTUM_SYNC</div>
+            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">CORE_PROTOCOL</div>
+        </div>
+    </section>
+
+    <!-- Institutional Footer -->
     <footer style="margin-top: 100px; padding: 60px 40px; border-top: 1px solid var(--border); text-align: center;">
-        
         <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 35px; flex-wrap: wrap;">
             <a href="#" style="color: var(--dim); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold;">TWITTER / X</a>
             <a href="#" style="color: var(--dim); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold;">DISCORD</a>
@@ -106,6 +126,7 @@
         </div>
     </footer>
 
+    <!-- Core Scripts -->
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
