@@ -1,7 +1,7 @@
 /* 
- * STATE OF PROTOCOL - FOUNDATION STYLESHEET v1.0.5
+ * STATE OF PROTOCOL - FOUNDATION STYLESHEET v1.0.6
  * Optimization: Fluid Typography | Zero Bloat | Multi-Device Adaptive
- * Feature: Premium Scroll Reveal
+ * Feature: Premium Scroll Reveal (Blur & Organic Motion)
  */
 
 :root {
@@ -26,6 +26,7 @@
 html, body {
     width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -115,7 +116,7 @@ input {
     border-radius: 4px;
     color: white;
     font-family: inherit;
-    font-size: 16px; /* Optimized for Mobile (No Zoom) */
+    font-size: 16px; 
     outline: none;
     transition: all 0.3s ease;
 }
@@ -208,13 +209,11 @@ button:disabled { background: var(--dim); cursor: not-allowed; }
    BREAKPOINTS (Optimized for All Devices)
    ========================================== */
 
-/* IPAD & TABLET (Portrait) */
 @media (max-width: 1024px) {
     .results-grid { grid-template-columns: repeat(2, 1fr); }
     .wide { grid-column: span 2; }
 }
 
-/* MOBILE LARGE (Smartphone) */
 @media (max-width: 768px) {
     .navbar { padding: 15px 5%; }
     .results-grid { grid-template-columns: 1fr; } 
@@ -224,7 +223,6 @@ button:disabled { background: var(--dim); cursor: not-allowed; }
     button { flex: none; width: 100%; }
 }
 
-/* MOBILE SMALL (Legacy Devices) */
 @media (max-width: 480px) {
     .container { padding: 30px 0; }
     .card { padding: 20px; }
@@ -237,16 +235,19 @@ button:disabled { background: var(--dim); cursor: not-allowed; }
 }
 
 /* ==========================================
-   PREMIUM REVEAL ANIMATION
+   PREMIUM REVEAL ANIMATION (v1.0.6)
    ========================================== */
 
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: blur(5px); /* Kesan premium blur */
+    transform: translateY(20px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Motion organik */
+    will-change: transform, opacity, filter;
 }
 
 .reveal.active {
     opacity: 1;
+    filter: blur(0);
     transform: translateY(0);
 }
