@@ -1,7 +1,7 @@
 /**
  * STATE OF PROTOCOL - CORE ENGINE v1.0.5
  * Authority: S.O.P Foundation
- * Features: Zero Dependency | RAM Optimization | Dynamic Metadata Sync
+ * Features: Zero Dependency | RAM Optimization | Dynamic Metadata Sync | Scroll Reveal
  */
 
 // 1. PENGURUSAN MEMORI & STATUS TAB (Hibernation Logic)
@@ -134,8 +134,22 @@ function runAnalysis() {
     }, 1200);
 }
 
-// 6. INITIAL LOAD
-// Pastikan footer dikemaskini sebaik sahaja laman web dimuatkan
+// 6. INITIAL LOAD & SCROLL REVEAL LOGIC
 window.onload = () => {
     updateFooter();
+
+    // Logic untuk kesan Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Targetkan semua elemen yang memerlukan animasi
+    document.querySelectorAll('.card, .hero, .docs-section, .search-box').forEach((el) => {
+        el.classList.add('reveal');
+        observer.observe(el);
+    });
 };
