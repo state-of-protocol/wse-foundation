@@ -1,7 +1,7 @@
 /* 
- * STATE OF PROTOCOL - FOUNDATION STYLESHEET v1.2.0
+ * STATE OF PROTOCOL - FOUNDATION STYLESHEET v1.2.5
  * Authority: S.O.P Foundation
- * Optimization: Hybrid Analytics | Acquisition Grid | Neural UI
+ * Optimization: Hybrid Analytics | Acquisition Grid | Neural UI | Glow Directive
  */
 
 :root {
@@ -108,6 +108,36 @@ body {
     max-width: 550px; 
     font-size: clamp(13px, 2vw, 15px);
     margin-bottom: 40px;
+}
+
+/* ==========================================
+   DIRECTIVE: TERMINAL ALERT (GREEN GLOW)
+   ========================================== */
+
+.terminal-alert {
+    background: rgba(0, 255, 65, 0.03); /* Latar belakang hijau sangat pudar */
+    border-left: 3px solid var(--accent); /* Sempadan hijau terang S.O.P */
+    padding: 25px;
+    margin: 40px 0;
+    font-family: ui-monospace, 'SF Mono', monospace;
+    
+    /* Efek Soft Glow Shadow (Kritikal untuk rupa 'high-grade') */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1), 
+                inset 0 0 10px rgba(0, 255, 65, 0.05);
+    
+    border-radius: 4px; /* Sedikit bucu bulat */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Menambah efek kilauan halus (scanline effect) di belakang teks */
+.terminal-alert::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 65, 0.02) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
 }
 
 /* Terminal Input Box */
@@ -302,23 +332,20 @@ button:disabled {
 }
 
 /* ==========================================
-   NEW ADDITIONS: IDENTITY CARD & DYNAMIC UI
+    NEW ADDITIONS: IDENTITY CARD & DYNAMIC UI
    ========================================== */
 
-/* Penambahbaikan untuk Identity Card (domStatus) */
 #domStatus {
     position: relative;
     overflow: hidden;
-    border-left: 3px solid var(--accent); /* Memberi impak visual pada kad identiti */
+    border-left: 3px solid var(--accent); 
 }
 
-/* Memastikan COLLAB_REF nampak jelas walaupun font kecil */
 #domStatus span {
     font-family: ui-monospace, 'Cascadia Code', monospace;
     text-shadow: 0 0 5px rgba(0, 255, 65, 0.2);
 }
 
-/* Animasi semasa keputusan muncul melalui JS */
 .results-grid.grid-active {
     display: grid !important;
     animation: fadeIn 0.5s ease-in forwards;
