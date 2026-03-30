@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WSE // FOUNDATION</title>
+    <!-- CSS Asli (Dune-SIM Style) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background Glow Effect (Ultra-Light) -->
+    <div class="bg-glow"></div>
+
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-brand">
             <div class="dot"></div>
@@ -14,46 +19,61 @@
         </div>
     </nav>
 
+    <!-- Main Container -->
     <main class="container">
+        <!-- Hero Section -->
         <header class="hero">
             <h1>THE BRAND <br> <span class="gold">TRIGGER.</span></h1>
             <p class="subtitle">Real-time predictive analysis for high-velocity digital assets.</p>
         </header>
 
+        <!-- Search / Input Engine -->
         <div class="search-box">
-            <input type="text" id="brandInput" placeholder="Enter branding concept..." onkeypress="handleKey(event)">
+            <input type="text" id="brandInput" placeholder="Enter branding concept..." onkeypress="handleKey(event)" autocomplete="off">
             <button onclick="runAnalysis()" id="btn">Run Analysis</button>
         </div>
 
+        <!-- Results Display Grid (Hidden by default) -->
         <div id="results" class="results-grid" style="display: none;">
+            
+            <!-- Card 1: Trend Velocity (Wide) -->
             <div class="card wide">
                 <span class="label">Social Trend Velocity</span>
                 <div class="stats">
                     <span class="val" id="trendVal">0</span><span class="unit">%</span>
                 </div>
-                <div class="progress-bg"><div id="bar" class="progress-fill"></div></div>
+                <div class="progress-bg">
+                    <div id="bar" class="progress-fill"></div>
+                </div>
             </div>
 
+            <!-- Card 2: Asset Liquidity -->
             <div class="card">
                 <span class="label">Asset Liquidity</span>
                 <div class="val" id="volVal">0M</div>
                 <span class="status-up">▲ Trending</span>
             </div>
 
+            <!-- Card 3: Domain & Identity Audit (Smart Data) -->
             <div class="card">
-                <span class="label">Domain Status</span>
-                <div id="domStatus" class="val-sm">Checking...</div>
+                <span class="label">Identity & Security Audit</span>
+                <div id="domStatus" class="val-sm">Initializing...</div>
             </div>
 
+            <!-- Card 4: Regional Heatmap (Wide) -->
             <div class="card wide overflow-hidden">
-                <span class="label">Regional Heatmap</span>
+                <span class="label">Regional Adoption Heatmap</span>
                 <div class="heatmap" id="heatmap">
-                    <!-- JS generated regions -->
+                    <!-- Kawasan ini akan diisi secara dinamik oleh script.js -->
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- PANGGILAN DATA & LOGIK (TURUTAN PENTING) -->
+    <!-- 1. Database (data.js) dipanggil dahulu -->
+    <script src="data.js"></script>
+    <!-- 2. Logik Enjin (script.js) dipanggil kemudian -->
     <script src="script.js"></script>
 </body>
 </html>
