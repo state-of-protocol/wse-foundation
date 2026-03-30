@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STATE OF PROTOCOL // FOUNDATION</title>
-    <!-- Zero External Requests - All styles in style.css -->
+    <!-- Zero External Requests - Integrity maintained via style.css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navigation Bar: Institutional Style -->
+    <!-- Navigation Bar: Institutional Architecture -->
     <nav class="navbar">
         <div class="nav-brand">
             <div class="dot"></div>
             <span>STATE OF PROTOCOL <span class="dim">/ FOUNDATION</span></span>
         </div>
+        <!-- Real-time Status Indicator -->
+        <div class="status-up" style="font-size: 10px; letter-spacing: 1px;">SYSTEM: OPTIMAL</div>
     </nav>
 
     <!-- Main Container -->
@@ -31,7 +33,7 @@
             <button onclick="runAnalysis()" id="btn">Run Analysis</button>
         </div>
 
-        <!-- Results Display Grid -->
+        <!-- Results Display Grid (Populated via script.js) -->
         <div id="results" class="results-grid" style="display: none;">
             
             <!-- Card 1: Trend Velocity -->
@@ -62,12 +64,12 @@
             <div class="card wide overflow-hidden">
                 <span class="label">Global Adoption Heatmap</span>
                 <div class="heatmap" id="heatmap">
-                    <!-- JS generated regions -->
+                    <!-- Dynamic Regions injected by script.js -->
                 </div>
             </div>
 
             <!-- Card 5: Protocol Documentation (High-Value API Specs) -->
-            <section class="card wide docs-section" style="margin-top: 20px;">
+            <section class="card wide docs-section" style="margin-top: 20px; border-style: dashed; border-color: rgba(255,255,255,0.1);">
                 <span class="label">Protocol Documentation / v1.0.4-alpha</span>
                 <div class="docs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 15px;">
                     <div class="doc-item">
@@ -82,6 +84,17 @@
             </section>
         </div>
     </main>
+
+    <!-- Institutional Footer: Dynamic Sync Tracking -->
+    <footer style="margin-top: 100px; padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+        <div style="font-size: 10px; color: var(--dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">
+            Last Global Sync: <span id="sync-time" style="color: var(--accent); font-weight: bold;">---</span>
+        </div>
+        <div style="font-size: 9px; color: #444; line-height: 1.6;">
+            &copy; 2026 STATE OF PROTOCOL FOUNDATION.<br>
+            STRICT ADHERENCE TO ISO/IEC 27001 SIMULATED PROTOCOLS. ALL NODES OPERATIONAL.
+        </div>
+    </footer>
 
     <!-- CORE SCRIPTS -->
     <script src="data.js"></script>
