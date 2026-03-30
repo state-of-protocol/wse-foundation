@@ -1,36 +1,40 @@
 /* 
- * STATE OF PROTOCOL - FOUNDATION STYLESHEET
- * Optimization: Zero External Requests | RAM Friendly | Enterprise Aesthetics
+ * STATE OF PROTOCOL - FOUNDATION STYLESHEET v1.0.5
+ * Optimization: Fluid Typography | Zero Bloat | Multi-Device Adaptive
  */
 
 :root {
     /* Warna Institutional (High-Value Slate & Silver) */
     --bg: #050505;
     --card: #0a0a0a;
-    --accent: #ffffff;    /* Putih bersih untuk autoriti */
-    --gold: #d4af37;      /* Gold kekal sebagai 'legacy' aksen */
+    --accent: #ffffff;    
+    --gold: #d4af37;      
     --text: #f0f0f0;
     --dim: #666;
     --border: rgba(255, 255, 255, 0.08);
     --hover-bg: rgba(255, 255, 255, 0.03);
 }
 
+/* Reset & Base Foundation */
 * { 
     box-sizing: border-box; 
     margin: 0; 
     padding: 0; 
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--bg);
     color: var(--text);
-    /* Menggunakan System Font Stack (RAM < 1MB) - Tiada Google Fonts */
-    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
-    font-size: 13px;
+    font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+    font-size: 14px;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
 }
 
 /* Typography Utility */
@@ -38,18 +42,18 @@ body {
 .gold { color: var(--gold); }
 .white { color: var(--accent); }
 
-/* Navigation Area */
+/* Navigation Area - Sticky Fluid */
 .navbar {
-    padding: 25px 40px;
+    padding: clamp(15px, 3vh, 25px) 5%;
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(10px); /* Ringan untuk RAM */
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .nav-brand {
@@ -57,123 +61,112 @@ body {
     align-items: center;
     gap: 12px;
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: clamp(1px, 1vw, 4px);
     text-transform: uppercase;
 }
 
 .dot {
-    width: 6px; 
-    height: 6px;
+    width: 6px; height: 6px;
     background: var(--accent);
-    border-radius: 0%; /* Kotak lebih nampak 'Protocol-ish' */
     box-shadow: 0 0 12px var(--accent);
 }
 
-/* Layout Container */
+/* Main Layout - Fluid Container */
 .container { 
-    max-width: 1000px; 
+    width: 90%;
+    max-width: 1100px; 
     margin: 0 auto; 
-    padding: 80px 24px; 
+    padding: clamp(40px, 10vh, 80px) 0;
 }
 
-/* Hero Section */
+/* Hero Section - Clamp-based Typography */
 .hero h1 {
-    font-size: clamp(2rem, 10vw, 4.5rem);
+    font-size: clamp(2.2rem, 9vw, 4.5rem);
     font-weight: 800;
     line-height: 0.85;
-    letter-spacing: -4px;
+    letter-spacing: -0.05em;
     margin-bottom: 25px;
     color: var(--accent);
 }
 
 .subtitle { 
     color: var(--dim); 
-    max-width: 450px; 
+    max-width: 500px; 
     margin-bottom: 50px; 
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 14px);
     letter-spacing: -0.2px;
 }
 
-/* Search Engine UI */
+/* Search Engine UI - Flex Wrap Adaptive */
 .search-box {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 60px;
 }
 
 input {
-    flex: 1;
+    flex: 2;
+    min-width: 280px;
     background: var(--card);
     border: 1px solid var(--border);
     padding: 20px 28px;
-    border-radius: 4px; /* Sudut tajam lebih professional */
+    border-radius: 4px;
     color: white;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 16px; /* Optimized for Mobile (No Zoom) */
     outline: none;
     transition: all 0.3s ease;
 }
 
-input:focus { 
-    border-color: var(--accent);
-    background: var(--hover-bg);
-}
+input:focus { border-color: var(--accent); background: var(--hover-bg); }
 
 button {
+    flex: 1;
+    min-width: 180px;
     background: var(--accent);
     color: black;
     border: none;
-    padding: 0 40px;
+    padding: 20px 40px;
     border-radius: 4px;
     font-weight: 700;
-    font-family: inherit;
     text-transform: uppercase;
-    letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-button:hover { 
-    background: var(--gold); 
-    transform: translateY(-1px);
-}
+button:hover { background: var(--gold); transform: translateY(-1px); }
+button:disabled { background: var(--dim); cursor: not-allowed; }
 
-button:disabled {
-    background: var(--dim);
-    cursor: not-allowed;
-}
-
-/* Results Architecture */
+/* Results Architecture - Responsive Grid */
 .results-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    animation: fadeIn 0.5s ease-out;
+    gap: clamp(10px, 2vw, 20px);
+    animation: fadeIn 0.6s ease-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .card {
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 32px;
+    padding: clamp(20px, 4vw, 32px);
     border-radius: 4px;
-    transition: border-color 0.3s ease;
+    transition: 0.3s;
 }
 
-.card:hover {
-    border-color: rgba(255,255,255,0.2);
-}
+.card:hover { border-color: rgba(255,255,255,0.2); }
 
 .wide { grid-column: span 2; }
-.overflow-hidden { overflow: hidden; }
 
+/* Labels & Data Values */
 .label {
     display: block;
-    font-size: 10px;
+    font-size: clamp(8px, 1vw, 10px);
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--dim);
@@ -181,64 +174,69 @@ button:disabled {
 }
 
 .val { 
-    font-size: 48px; 
+    font-size: clamp(2rem, 6vw, 3.5rem); 
     font-weight: 700; 
     letter-spacing: -2px;
     color: var(--accent);
 }
 
-.val-sm { 
-    font-size: 14px; 
-    font-weight: 400; 
-    line-height: 1.5;
-}
+.val-sm { font-size: 14px; line-height: 1.6; }
+.unit { color: var(--dim); font-size: 0.5em; margin-left: 4px; }
 
-.unit { color: var(--dim); font-size: 20px; margin-left: 4px; }
-
-/* Data Visualization Tools */
+/* Data Visualization */
 .progress-bg {
-    width: 100%; 
-    height: 1px; /* Nipis untuk gaya minimalis */
+    width: 100%; height: 1px;
     background: var(--border);
     margin-top: 25px;
 }
 
 .progress-fill {
-    height: 100%; 
-    background: var(--accent);
-    width: 0%; 
+    height: 100%; background: var(--accent);
     transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.status-up { 
-    font-size: 10px; 
-    color: #4ade80; 
-    font-weight: bold; 
-    letter-spacing: 1px;
-}
+.status-up { font-size: 10px; color: #4ade80; font-weight: bold; }
 
-.heatmap {
+/* Heatmap & Docs Grid - Auto Fit System */
+.heatmap, .docs-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 24px;
 }
 
-/* Documentation / S.O.P Section */
 .docs-section {
     border-style: dashed !important;
     background: transparent !important;
 }
 
-.doc-item h4 {
-    font-size: 11px;
-    color: var(--accent);
-    margin-bottom: 5px;
+/* ==========================================
+   BREAKPOINTS (Optimized for All Devices)
+   ========================================== */
+
+/* IPAD & TABLET (Portrait) */
+@media (max-width: 1024px) {
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+    .wide { grid-column: span 2; }
 }
 
-/* Responsiveness */
-@media (max-width: 850px) {
-    .results-grid { grid-template-columns: 1fr; }
+/* MOBILE LARGE (Smartphone) */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 5%; }
+    .results-grid { grid-template-columns: 1fr; } 
     .wide { grid-column: span 1; }
-    .heatmap { grid-template-columns: 1fr 1fr; }
-    .container { padding: 40px 20px; }
+    .hero h1 { letter-spacing: -2px; }
+    input { flex: none; width: 100%; }
+    button { flex: none; width: 100%; }
+}
+
+/* MOBILE SMALL (Legacy Devices) */
+@media (max-width: 480px) {
+    .container { padding: 30px 0; }
+    .card { padding: 20px; }
+    .val { font-size: 2.2rem; }
+}
+
+@media print {
+    body { background: white; color: black; }
+    .navbar, .search-box { display: none; }
 }
