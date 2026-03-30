@@ -1,103 +1,171 @@
+/* 
+ * STATE OF PROTOCOL - FOUNDATION STYLESHEET
+ * Optimization: Zero External Requests | RAM Friendly | Enterprise Aesthetics
+ */
+
 :root {
+    /* Warna Institutional (High-Value Slate & Silver) */
     --bg: #050505;
-    --card: #0f0f0f;
-    --gold: #d4af37;
-    --border: rgba(255, 255, 255, 0.05);
-    --text: #e5e5e5;
+    --card: #0a0a0a;
+    --accent: #ffffff;    /* Putih bersih untuk autoriti */
+    --gold: #d4af37;      /* Gold kekal sebagai 'legacy' aksen */
+    --text: #f0f0f0;
     --dim: #666;
+    --border: rgba(255, 255, 255, 0.08);
+    --hover-bg: rgba(255, 255, 255, 0.03);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 body {
-    background: var(--bg);
+    background-color: var(--bg);
     color: var(--text);
-    /* Font gaya coding/technical */
-    font-family: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono', monospace;
+    /* Menggunakan System Font Stack (RAM < 1MB) - Tiada Google Fonts */
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
     font-size: 13px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
+/* Typography Utility */
 .dim { color: var(--dim); }
 .gold { color: var(--gold); }
+.white { color: var(--accent); }
 
+/* Navigation Area */
 .navbar {
-    padding: 20px 40px;
+    padding: 25px 40px;
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px); /* Ringan untuk RAM */
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-weight: 900;
-    letter-spacing: 2px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
 .dot {
-    width: 8px; height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--gold);
+    width: 6px; 
+    height: 6px;
+    background: var(--accent);
+    border-radius: 0%; /* Kotak lebih nampak 'Protocol-ish' */
+    box-shadow: 0 0 12px var(--accent);
 }
 
-.container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+/* Layout Container */
+.container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 80px 24px; 
+}
 
+/* Hero Section */
 .hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 900;
-    line-height: 0.9;
-    letter-spacing: -3px;
-    margin-bottom: 20px;
+    font-size: clamp(2rem, 10vw, 4.5rem);
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -4px;
+    margin-bottom: 25px;
+    color: var(--accent);
 }
 
-.subtitle { color: var(--dim); max-width: 400px; margin-bottom: 40px; }
+.subtitle { 
+    color: var(--dim); 
+    max-width: 450px; 
+    margin-bottom: 50px; 
+    font-size: 14px;
+    letter-spacing: -0.2px;
+}
 
+/* Search Engine UI */
 .search-box {
     display: flex;
-    gap: 10px;
-    margin-bottom: 40px;
+    gap: 12px;
+    margin-bottom: 60px;
 }
 
 input {
     flex: 1;
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 18px 25px;
-    border-radius: 50px;
+    padding: 20px 28px;
+    border-radius: 4px; /* Sudut tajam lebih professional */
     color: white;
+    font-family: inherit;
+    font-size: 14px;
     outline: none;
+    transition: all 0.3s ease;
 }
 
-input:focus { border-color: var(--gold); }
+input:focus { 
+    border-color: var(--accent);
+    background: var(--hover-bg);
+}
 
 button {
-    background: white;
+    background: var(--accent);
     color: black;
     border: none;
-    padding: 0 35px;
-    border-radius: 50px;
-    font-weight: 900;
+    padding: 0 40px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: inherit;
     text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
-button:hover { background: var(--gold); }
+button:hover { 
+    background: var(--gold); 
+    transform: translateY(-1px);
+}
 
+button:disabled {
+    background: var(--dim);
+    cursor: not-allowed;
+}
+
+/* Results Architecture */
 .results-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 16px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .card {
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 32px;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(255,255,255,0.2);
 }
 
 .wide { grid-column: span 2; }
@@ -105,37 +173,72 @@ button:hover { background: var(--gold); }
 
 .label {
     display: block;
-    font-size: 9px;
+    font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--dim);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
-.val { font-size: 40px; font-weight: 900; }
-.val-sm { font-size: 16px; font-weight: 700; margin-top: 10px; }
-.unit { color: var(--gold); margin-left: 5px; }
+.val { 
+    font-size: 48px; 
+    font-weight: 700; 
+    letter-spacing: -2px;
+    color: var(--accent);
+}
 
+.val-sm { 
+    font-size: 14px; 
+    font-weight: 400; 
+    line-height: 1.5;
+}
+
+.unit { color: var(--dim); font-size: 20px; margin-left: 4px; }
+
+/* Data Visualization Tools */
 .progress-bg {
-    width: 100%; height: 2px;
-    background: rgba(255,255,255,0.05);
-    margin-top: 20px;
+    width: 100%; 
+    height: 1px; /* Nipis untuk gaya minimalis */
+    background: var(--border);
+    margin-top: 25px;
 }
 
 .progress-fill {
-    height: 100%; background: var(--gold);
-    width: 0%; transition: width 1.5s ease-out;
+    height: 100%; 
+    background: var(--accent);
+    width: 0%; 
+    transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.status-up { font-size: 9px; color: #4ade80; font-weight: bold; }
+.status-up { 
+    font-size: 10px; 
+    color: #4ade80; 
+    font-weight: bold; 
+    letter-spacing: 1px;
+}
 
 .heatmap {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 24px;
 }
 
-@media (max-width: 768px) {
+/* Documentation / S.O.P Section */
+.docs-section {
+    border-style: dashed !important;
+    background: transparent !important;
+}
+
+.doc-item h4 {
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 5px;
+}
+
+/* Responsiveness */
+@media (max-width: 850px) {
     .results-grid { grid-template-columns: 1fr; }
     .wide { grid-column: span 1; }
+    .heatmap { grid-template-columns: 1fr 1fr; }
+    .container { padding: 40px 20px; }
 }
