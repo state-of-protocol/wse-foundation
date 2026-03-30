@@ -10,67 +10,29 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     
-    <!-- Fail gaya visual -->
+    <!-- Fail gaya visual utama -->
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* Tambahan CSS Inline untuk Terminal & Modal Premium */
+        /* Penambahbaikan visual untuk integrasi terminal */
         .authentication-terminal {
             background: rgba(0, 20, 0, 0.3);
             border: 1px solid var(--accent);
             box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-            transition: 0.3s;
         }
-        .authentication-terminal:focus-within {
-            box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
+        .results-grid {
+            display: none; /* Dihidupkan melalui JS */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            align-items: center; justify-content: center;
-        }
-        .modal.open { display: flex; }
-        .spinner {
-            border: 3px solid rgba(0, 255, 65, 0.1);
-            border-left-color: var(--accent);
-            border-radius: 50%; width: 30px; height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        
-        /* Grid Jualan */
-        .acquisition-card {
+        .metric-card {
+            background: var(--card);
             border: 1px solid var(--border);
-            padding: 30px;
+            padding: 25px;
             text-align: center;
-            transition: 0.3s;
-            cursor: default;
         }
-        .acquisition-card:hover {
-            border-color: var(--accent);
-            background: rgba(0, 255, 65, 0.02);
-        }
-        .btn-acquire {
-            background: none;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 12px;
-            width: 100%;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 10px;
-            cursor: pointer;
-            letter-spacing: 1px;
-            margin-top: 20px;
-        }
-        .btn-acquire:hover {
-            background: var(--accent);
-            color: black;
-        }
+        .reg-val { color: var(--accent); font-weight: bold; }
     </style>
 </head>
 <body>
@@ -95,18 +57,56 @@
         <div class="search-box authentication-terminal">
             <div style="position: relative; flex: 2; display: flex; align-items: center;">
                 <span style="position: absolute; left: 20px; color: var(--accent); font-family: monospace; font-weight: bold;">></span>
-                <input type="text" id="brandInput" placeholder="ENTER ASSET ID TO AUTHENTICATE..." onkeypress="handleKey(event)" style="padding-left: 45px; color: var(--accent); text-transform: uppercase;" autocomplete="off">
+                <input type="text" id="brandInput" placeholder="ENTER DOMAIN OR ASSET ID..." onkeypress="handleKey(event)" style="padding-left: 45px; color: var(--accent); text-transform: uppercase;" autocomplete="off">
             </div>
             <button onclick="runAuthentication()" id="btn">AUTHENTICATE</button>
         </div>
 
-        <!-- ACQUISITION GRID (3 KATEGORI PRODUK) -->
-        <section style="margin-top: 80px;">
-            <span class="label" style="display: block; text-align: center; margin-bottom: 40px;">Neural Asset Acquisition / Secure Nodes</span>
+        <!-- ==========================================
+             SECTION 1: ANALYTICS RESULTS (DOMAIN AUDIT)
+             ========================================== -->
+        <div id="results" class="results-grid">
+            <!-- Card 1: Identity Analysis -->
+            <div class="card" id="domStatus">
+                <!-- Diisi secara dinamik oleh JS -->
+                <span class="label">Initialising Neural Audit...</span>
+            </div>
+
+            <!-- Card 2: Trend Velocity -->
+            <div class="card">
+                <span class="label">Trend Velocity</span>
+                <div class="val"><span id="trendVal">0</span><span class="unit">%</span></div>
+                <div class="progress-bg"><div id="bar" class="progress-fill" style="width: 0%;"></div></div>
+            </div>
+
+            <!-- Card 3: Liquidity/Volume -->
+            <div class="card">
+                <span class="label">Liquidity Volume</span>
+                <div class="val"><span id="volVal">0</span><span class="unit">M</span></div>
+                <p style="font-size: 10px; color: var(--dim); margin-top: 10px;">Institutional node flow detected.</p>
+            </div>
+
+            <!-- Card 4: Regional Heatmap (Dinamik) -->
+            <div class="card wide">
+                <span class="label">Regional Node Synchronisation</span>
+                <div id="heatmap" class="heatmap">
+                    <!-- Diisi oleh JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SECTION 2: ACQUISITION GRID (JUALAN)
+             ========================================== -->
+        <section style="margin-top: 100px;">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span class="label">Neural Asset Acquisition / Secure Nodes</span>
+                <h2 style="letter-spacing: 5px; font-size: 18px; margin-top: 10px;">AVAILABLE PROTOCOLS</h2>
+            </div>
             
             <div class="docs-grid">
                 <!-- Entry Level -->
-                <div class="acquisition-card">
+                <div class="acquisition-card card">
                     <div style="font-size: 9px; color: var(--dim); margin-bottom: 10px;">[ CODE_BASE ]</div>
                     <h3 style="letter-spacing: 2px; font-size: 14px;">THE BLUEPRINT</h3>
                     <p style="font-size: 10px; color: var(--dim); margin: 20px 0; line-height: 1.6;">Generative framework for NFT dynamic rendering. Clean, sovereign code.</p>
@@ -115,7 +115,7 @@
                 </div>
 
                 <!-- Premium Level -->
-                <div class="acquisition-card" style="border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(0, 255, 65, 0.05);">
+                <div class="acquisition-card card" style="border: 1px solid var(--accent); box-shadow: 0 0 20px rgba(0, 255, 65, 0.05);">
                     <div style="font-size: 9px; color: var(--accent); margin-bottom: 10px;">[ IDENTITY_DNA ]</div>
                     <h3 style="letter-spacing: 2px; font-size: 14px;">SOVEREIGN DNA KIT</h3>
                     <p style="font-size: 10px; color: var(--dim); margin: 20px 0; line-height: 1.6;">Premium Logo Assets + AI Prompt Engineering for elite NFT collections.</p>
@@ -124,7 +124,7 @@
                 </div>
 
                 <!-- Enterprise Level -->
-                <div class="acquisition-card">
+                <div class="acquisition-card card">
                     <div style="font-size: 9px; color: var(--dim); margin-bottom: 10px;">[ FULL_GOVERNANCE ]</div>
                     <h3 style="letter-spacing: 2px; font-size: 14px;">GOVERNANCE NODE</h3>
                     <p style="font-size: 10px; color: var(--dim); margin: 20px 0; line-height: 1.6;">Full Concept Ownership + Genesis Collection Setup. Exclusive partnership.</p>
@@ -134,46 +134,38 @@
             </div>
         </section>
 
-        <!-- Analytics Results (Hidden by default) -->
-        <div id="results" class="results-grid" style="display: none; margin-top: 50px;">
-            <div class="card wide">
-                <span class="label">Protocol Integration Status</span>
-                <div id="authResultContent"></div>
+        <!-- Governance Section -->
+        <section style="margin-top: 100px; padding-bottom: 50px;">
+            <span class="label">Strategic Governance / Architecture Team</span>
+            <div class="docs-grid" style="margin-top: 30px;">
+                <div class="card" style="text-align: center;">
+                    <div style="width: 50px; height: 50px; background: #111; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
+                    <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">SHIFT_DEV</div>
+                    <div style="font-size: 9px; color: var(--dim); margin-top: 5px;">Lead Protocol Architect</div>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div style="width: 50px; height: 50px; background: #111; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
+                    <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">WSE_NODE_01</div>
+                    <div style="font-size: 9px; color: var(--dim); margin-top: 5px;">Strategic Advisor</div>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- MODAL AUTHENTICATION -->
+    <!-- MODAL AUTHENTICATION (Overlay UI) -->
     <div id="authModal" class="modal">
-        <div class="card wide" style="background: #0a0a0a; border: 1px solid var(--accent); max-width: 450px; padding: 40px; position: relative;">
+        <div class="card" style="background: #0a0a0a; border: 1px solid var(--accent); max-width: 450px; width: 90%; padding: 40px; position: relative;">
             <span onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; color: var(--dim); cursor: pointer; font-family: monospace;">[X]</span>
             <div id="modalInnerContent"></div>
         </div>
     </div>
 
-    <!-- Strategic Governance -->
-    <section class="container" style="padding-top: 60px;">
-        <span class="label">Strategic Governance / Core Team</span>
-        <div class="docs-grid" style="margin-top: 20px;">
-            <div class="card" style="text-align: center;">
-                <div style="width: 50px; height: 50px; background: #111; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
-                <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">SHIFT_DEV</div>
-                <div style="font-size: 9px; color: var(--dim); margin-top: 5px;">Lead Protocol Architect</div>
-            </div>
-            <div class="card" style="text-align: center;">
-                <div style="width: 50px; height: 50px; background: #111; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
-                <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">WSE_NODE_01</div>
-                <div style="font-size: 9px; color: var(--dim); margin-top: 5px;">Strategic Advisor</div>
-            </div>
-        </div>
-    </section>
-
     <!-- Institutional Footer -->
-    <footer style="margin-top: 100px; padding: 60px 40px; border-top: 1px solid var(--border); text-align: center;">
+    <footer style="margin-top: 50px; padding: 60px 40px; border-top: 1px solid var(--border); text-align: center;">
         <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 35px;">
             <a href="https://t.me/WSE_Sovereign_Bot" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 10px; letter-spacing: 1px; font-weight: bold;">TELEGRAM NODE</a>
-            <a href="#" style="color: var(--dim); text-decoration: none; font-size: 10px; letter-spacing: 1px;">X / TWITTER</a>
             <a href="https://docs.google.com/document/d/1aSrLBJlDUi6CKiObM6USsmPQecZuq_EUUH-Vk2gzqYc/edit" target="_blank" style="color: var(--dim); text-decoration: none; font-size: 10px; letter-spacing: 1px;">WHITEPAPER</a>
+            <span style="color: var(--dim); font-size: 10px; letter-spacing: 1px;">SYNC: <span id="sync-time">--</span></span>
         </div>
         <div style="font-size: 9px; color: #444; line-height: 1.8; letter-spacing: 1px;">
             &copy; 2026 STATE OF PROTOCOL FOUNDATION. <br>
