@@ -6,15 +6,72 @@
     <title>STATE OF PROTOCOL // FOUNDATION</title>
 
     <!-- FAVICON CONFIGURATION -->
-    <!-- Standard Favicon untuk Browser Tab -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    
-    <!-- Untuk paparan iPhone/iPad Home Screen -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     
     <!-- Fail gaya visual -->
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Tambahan CSS Inline untuk Terminal & Modal Premium */
+        .authentication-terminal {
+            background: rgba(0, 20, 0, 0.3);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+            transition: 0.3s;
+        }
+        .authentication-terminal:focus-within {
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            align-items: center; justify-content: center;
+        }
+        .modal.open { display: flex; }
+        .spinner {
+            border: 3px solid rgba(0, 255, 65, 0.1);
+            border-left-color: var(--accent);
+            border-radius: 50%; width: 30px; height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        /* Grid Jualan */
+        .acquisition-card {
+            border: 1px solid var(--border);
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: default;
+        }
+        .acquisition-card:hover {
+            border-color: var(--accent);
+            background: rgba(0, 255, 65, 0.02);
+        }
+        .btn-acquire {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 12px;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 10px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        .btn-acquire:hover {
+            background: var(--accent);
+            color: black;
+        }
+    </style>
 </head>
 <body>
 
@@ -24,119 +81,103 @@
             <div class="dot"></div>
             <span>STATE OF PROTOCOL <span class="dim">/ FOUNDATION</span></span>
         </div>
-        <div class="status-up" style="font-size: 10px; letter-spacing: 1px;">SYSTEM: OPTIMAL</div>
+        <div class="status-up" style="font-size: 10px; letter-spacing: 1px;">NODE: WSE_ACTIVE</div>
     </nav>
 
     <main class="container">
         <!-- Hero Section -->
         <header class="hero">
             <h1>THE BRAND <br> <span class="white">TRIGGER.</span></h1>
-            <p class="subtitle">Standardizing neural assets and high-velocity digital identity through sovereign protocols.</p>
+            <p class="subtitle">Standardizing neural assets, generative art protocols, and high-velocity digital identity.</p>
         </header>
 
-        <!-- Optimized Search Engine UI -->
-        <div class="search-box">
-            <div style="position: relative; flex: 2;">
-                <span style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--dim); font-family: monospace;">/</span>
-                <input type="text" id="brandInput" placeholder="Search protocol documentation or analyze brand..." onkeypress="handleKey(event)" style="padding-left: 45px;" autocomplete="off">
+        <!-- PREMIUM AUTHENTICATION TERMINAL -->
+        <div class="search-box authentication-terminal">
+            <div style="position: relative; flex: 2; display: flex; align-items: center;">
+                <span style="position: absolute; left: 20px; color: var(--accent); font-family: monospace; font-weight: bold;">></span>
+                <input type="text" id="brandInput" placeholder="ENTER ASSET ID TO AUTHENTICATE..." onkeypress="handleKey(event)" style="padding-left: 45px; color: var(--accent); text-transform: uppercase;" autocomplete="off">
             </div>
-            <button onclick="runAnalysis()" id="btn">Analyze</button>
+            <button onclick="runAuthentication()" id="btn">AUTHENTICATE</button>
         </div>
 
-        <!-- Results Display Grid (Akan muncul selepas klik Analyze) -->
-        <div id="results" class="results-grid" style="display: none;">
+        <!-- ACQUISITION GRID (3 KATEGORI PRODUK) -->
+        <section style="margin-top: 80px;">
+            <span class="label" style="display: block; text-align: center; margin-bottom: 40px;">Neural Asset Acquisition / Secure Nodes</span>
             
+            <div class="docs-grid">
+                <!-- Entry Level -->
+                <div class="acquisition-card">
+                    <div style="font-size: 9px; color: var(--dim); margin-bottom: 10px;">[ CODE_BASE ]</div>
+                    <h3 style="letter-spacing: 2px; font-size: 14px;">THE BLUEPRINT</h3>
+                    <p style="font-size: 10px; color: var(--dim); margin: 20px 0; line-height: 1.6;">Generative framework for NFT dynamic rendering. Clean, sovereign code.</p>
+                    <div style="font-size: 18px; font-family: monospace;">RM 200</div>
+                    <button class="btn-acquire" onclick="window.open('https://t.me/WSE_Sovereign_Bot', '_blank')">Acquire via Stars</button>
+                </div>
+
+                <!-- Premium Level -->
+                <div class="acquisition-card" style="border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(0, 255, 65, 0.05);">
+                    <div style="font-size: 9px; color: var(--accent); margin-bottom: 10px;">[ IDENTITY_DNA ]</div>
+                    <h3 style="letter-spacing: 2px; font-size: 14px;">SOVEREIGN DNA KIT</h3>
+                    <p style="font-size: 10px; color: var(--dim); margin: 20px 0; line-height: 1.6;">Premium Logo Assets + AI Prompt Engineering for elite NFT collections.</p>
+                    <div style="font-size: 18px; font-family: monospace; color: var(--accent);">RM 2,000</div>
+                    <button class="btn-acquire" style="background: var(--accent); color: black;" onclick="window.open('https://t.me/WSE_Sovereign_Bot', '_blank')">Acquire via Stars</button>
+                </div>
+
+                <!-- Enterprise Level -->
+                <div class="acquisition-card">
+                    <div style="font-size: 9px; color: var(--dim); margin-bottom: 10px;">[ FULL_GOVERNANCE ]</div>
+                    <h3 style="letter-spacing: 2px; font-size: 14px;">GOVERNANCE NODE</h3>
+                    <p style="font-size: 10px; color: var(--dim); margin: 20px 0; line-height: 1.6;">Full Concept Ownership + Genesis Collection Setup. Exclusive partnership.</p>
+                    <div style="font-size: 18px; font-family: monospace;">RM 10,000</div>
+                    <button class="btn-acquire" onclick="window.open('https://t.me/WSE_Sovereign_Bot', '_blank')">Contact Architect</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Results (Hidden by default) -->
+        <div id="results" class="results-grid" style="display: none; margin-top: 50px;">
             <div class="card wide">
-                <span class="label">Social Trend Velocity / Real-time</span>
-                <div class="stats">
-                    <span class="val" id="trendVal">0</span><span class="unit">%</span>
-                </div>
-                <div class="progress-bg">
-                    <div id="bar" class="progress-fill"></div>
-                </div>
+                <span class="label">Protocol Integration Status</span>
+                <div id="authResultContent"></div>
             </div>
-
-            <div class="card">
-                <span class="label">Liquidity Index</span>
-                <div class="val" id="volVal">0M</div>
-                <span class="status-up">▲ STABLE MOMENTUM</span>
-            </div>
-
-            <div class="card">
-                <span class="label">Identity Audit (SSL/Sovereign)</span>
-                <div id="domStatus" class="val-sm">Awaiting instruction...</div>
-            </div>
-
-            <div class="card wide overflow-hidden">
-                <span class="label">Global Adoption Heatmap</span>
-                <div class="heatmap" id="heatmap">
-                    <!-- Dynamic Regions disuntik oleh script.js -->
-                </div>
-            </div>
-
-            <!-- Documentation Section with Active Links -->
-            <section class="card wide docs-section" style="margin-top: 20px;">
-                <span class="label">Protocol Documentation / v1.0.6-alpha</span>
-                <div class="docs-grid" style="margin-top: 15px;">
-                    <!-- Documentation Item 1 (BM Version) -->
-                    <div class="doc-item" onclick="window.open('https://docs.google.com/document/d/1tC0-UicJ1aSxhouLYz7YzTWHxaajvf4vQvisJ2KfMRk/edit', '_blank')" style="cursor: pointer;">
-                        <h4 style="font-size: 11px; color: var(--accent); letter-spacing: 1px; margin-bottom: 8px;">[ GET ] /api/v1/velocity (BM)</h4>
-                        <p style="font-size: 10px; color: var(--dim); line-height: 1.4;">Data momentum sosial masa nyata untuk senibina penjenamaan neural.</p>
-                    </div>
-                    <!-- Documentation Item 2 (EN Version) -->
-                    <div class="doc-item" onclick="window.open('https://docs.google.com/document/d/1aSrLBJlDUi6CKiObM6USsmPQecZuq_EUUH-Vk2gzqYc/edit', '_blank')" style="cursor: pointer;">
-                        <h4 style="font-size: 11px; color: var(--accent); letter-spacing: 1px; margin-bottom: 8px;">[ POST ] /api/v1/audit (EN)</h4>
-                        <p style="font-size: 10px; color: var(--dim); line-height: 1.4;">Initialize SSL-Grade security audit for sovereign digital assets.</p>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
-    <!-- Strategic Governance Section -->
-    <section class="container" style="padding-top: 0;">
+    <!-- MODAL AUTHENTICATION -->
+    <div id="authModal" class="modal">
+        <div class="card wide" style="background: #0a0a0a; border: 1px solid var(--accent); max-width: 450px; padding: 40px; position: relative;">
+            <span onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; color: var(--dim); cursor: pointer; font-family: monospace;">[X]</span>
+            <div id="modalInnerContent"></div>
+        </div>
+    </div>
+
+    <!-- Strategic Governance -->
+    <section class="container" style="padding-top: 60px;">
         <span class="label">Strategic Governance / Core Team</span>
         <div class="docs-grid" style="margin-top: 20px;">
-            <div class="card" style="text-align: center; border-style: solid;">
-                <div style="width: 60px; height: 60px; background: #222; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
-                <div style="font-weight: bold; font-size: 14px;">SHIFT_DEV</div>
-                <div style="font-size: 10px; color: var(--dim);">Lead Protocol Architect</div>
+            <div class="card" style="text-align: center;">
+                <div style="width: 50px; height: 50px; background: #111; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
+                <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">SHIFT_DEV</div>
+                <div style="font-size: 9px; color: var(--dim); margin-top: 5px;">Lead Protocol Architect</div>
             </div>
-            <div class="card" style="text-align: center; border-style: solid;">
-                <div style="width: 60px; height: 60px; background: #222; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
-                <div style="font-weight: bold; font-size: 14px;">WSE_NODE_01</div>
-                <div style="font-size: 10px; color: var(--dim);">Strategic Advisor</div>
+            <div class="card" style="text-align: center;">
+                <div style="width: 50px; height: 50px; background: #111; border-radius: 50%; margin: 0 auto 15px; border: 1px solid var(--border);"></div>
+                <div style="font-weight: bold; font-size: 12px; letter-spacing: 1px;">WSE_NODE_01</div>
+                <div style="font-size: 9px; color: var(--dim); margin-top: 5px;">Strategic Advisor</div>
             </div>
-        </div>
-    </section>
-
-    <!-- Partners & Ecosystem -->
-    <section class="container" style="padding-top: 0; border-top: 1px solid var(--border); margin-top: 50px;">
-        <span class="label" style="text-align: center; margin-bottom: 40px; display: block;">Trusted Node Operators & Ecosystem Partners</span>
-        <div style="display: flex; justify-content: space-around; align-items: center; opacity: 0.4; filter: grayscale(1); gap: 40px; flex-wrap: wrap;">
-            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">NEURAL_LABS</div>
-            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">SOVEREIGN_DAO</div>
-            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">QUANTUM_SYNC</div>
-            <div style="font-weight: 800; font-size: 18px; letter-spacing: -1px; font-family: sans-serif;">CORE_PROTOCOL</div>
         </div>
     </section>
 
     <!-- Institutional Footer -->
     <footer style="margin-top: 100px; padding: 60px 40px; border-top: 1px solid var(--border); text-align: center;">
-        <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 35px; flex-wrap: wrap;">
-            <a href="#" style="color: var(--dim); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold;">TWITTER / X</a>
-            <a href="#" style="color: var(--dim); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold;">DISCORD</a>
-            <!-- Whitepaper Link -->
-            <a href="https://docs.google.com/document/d/1aSrLBJlDUi6CKiObM6USsmPQecZuq_EUUH-Vk2gzqYc/edit" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 11px; letter-spacing: 1px; font-weight: bold; border-bottom: 1px solid var(--accent);">WHITEPAPER (EN)</a>
+        <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 35px;">
+            <a href="https://t.me/WSE_Sovereign_Bot" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 10px; letter-spacing: 1px; font-weight: bold;">TELEGRAM NODE</a>
+            <a href="#" style="color: var(--dim); text-decoration: none; font-size: 10px; letter-spacing: 1px;">X / TWITTER</a>
+            <a href="https://docs.google.com/document/d/1aSrLBJlDUi6CKiObM6USsmPQecZuq_EUUH-Vk2gzqYc/edit" target="_blank" style="color: var(--dim); text-decoration: none; font-size: 10px; letter-spacing: 1px;">WHITEPAPER</a>
         </div>
-
-        <div style="font-size: 10px; color: var(--dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">
-            Last Global Sync: <span id="sync-time" style="color: var(--accent); font-weight: bold;">---</span>
-        </div>
-
-        <div style="font-size: 9px; color: #444; line-height: 1.6;">
-            &copy; 2026 STATE OF PROTOCOL FOUNDATION. ALL RIGHTS RESERVED.<br>
-            STRICT ADHERENCE TO ISO/IEC 27001 SIMULATED PROTOCOLS. ALL NODES OPERATIONAL.
+        <div style="font-size: 9px; color: #444; line-height: 1.8; letter-spacing: 1px;">
+            &copy; 2026 STATE OF PROTOCOL FOUNDATION. <br>
+            ENCRYPTED ASSET DISTRIBUTION SYSTEM. ALL NODES OPERATIONAL.
         </div>
     </footer>
 
