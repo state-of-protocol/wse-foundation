@@ -1,5 +1,5 @@
 /**
- * STATE OF PROTOCOL - CORE ENGINE v1.1.5 (HYBRID)
+ * STATE OF PROTOCOL - CORE ENGINE v1.1.6 (HYBRID)
  * Authority: S.O.P Foundation
  * Features: Domain Analytics + Asset Authentication | Neural Modal UI
  */
@@ -59,8 +59,6 @@ function runAuthentication() {
         `;
 
         setTimeout(() => {
-            // Kita gunakan ID yang ditaip untuk semak dalam database (pilihan)
-            // Di sini kita kekalkan logik: Jika ada WSE- ia dianggap cubaan login aset
             const idCheck = input.toUpperCase();
             if (idCheck.length > 5) {
                 showAuthSuccess(idCheck, modalContent);
@@ -91,19 +89,22 @@ function runAuthentication() {
         const vol = (Math.random() * 8 + 1).toFixed(1);
         document.getElementById('volVal').innerText = vol + 'M';
 
-        // B. Update Domain Identity Card
+        // B. Update Domain Identity Card (DENGAN NAMA COLLAB)
         const domArea = document.getElementById('domStatus');
         domArea.innerHTML = `
             <div style="color:var(--accent); font-size:9px; font-weight:900; margin-bottom:10px; letter-spacing:2px">
                 [ DOMAIN_INTELLIGENCE ]
             </div>
-            <div style="color:white; font-size:16px; font-weight:bold; margin-bottom:10px; letter-spacing:-0.5px">
+            <div style="color:white; font-size:16px; font-weight:bold; margin-bottom:5px; letter-spacing:-0.5px">
                 ${input.toLowerCase()}
+            </div>
+            <div style="color:var(--dim); font-size:10px; margin-bottom:15px; font-family:monospace;">
+                COLLAB_REF: <span style="color:var(--accent)">${randomEntity.name}</span>
             </div>
             <div style="font-size:10px; color:#666; line-height:1.8; border-top: 1px solid var(--border); padding-top:10px;">
                 REPUTATION : <span style="color:#4ade80; font-weight:bold">HIGH_TRUST</span><br>
                 INTEGRITY  : <span style="color:#fff;">${(randomEntity.integrity * 100).toFixed(0)}%</span><br>
-                L-STATUS   : <span style="color:#fff; background:rgba(255,255,255,0.1); padding:0 4px;">${status}</span>
+                S.O.P NODE : <span style="color:#fff; background:rgba(255,255,255,0.1); padding:0 4px;">${status}</span>
             </div>
         `;
 
@@ -127,7 +128,7 @@ function runAuthentication() {
     }, 1500);
 }
 
-// 5. UI: SUCCESS STATE (Aset Dijumpai)
+// 5. UI: SUCCESS STATE
 function showAuthSuccess(id, container) {
     container.innerHTML = `
         <div style="text-align:center;">
@@ -144,7 +145,7 @@ function showAuthSuccess(id, container) {
     `;
 }
 
-// 6. UI: FAIL STATE (Aset Tiada/Sila Beli)
+// 6. UI: FAIL STATE
 function showAuthFail(id, container) {
     container.innerHTML = `
         <div style="text-align:center;">
@@ -183,7 +184,6 @@ window.onload = () => {
         observer.observe(el);
     });
 
-    // Heatmap Initialization
     const heatmap = document.getElementById('heatmap');
     if (heatmap) {
         const regions = ['N. AMERICA', 'EUROPE', 'ASIA', 'MIDDLE EAST'];
